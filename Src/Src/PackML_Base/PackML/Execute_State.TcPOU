@@ -9,6 +9,7 @@ END_VAR
 VAR
 	_state : ITF_PMLBase;
 	_stateMachine : IPmlStateMachine;
+	bComplete : BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -20,7 +21,9 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[IF bComplete THEN
+	_state.SetStateComplete();
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="FB_init" Id="{154cef4d-188f-4dcf-a46b-37b6c09094d7}">
@@ -41,7 +44,7 @@ _state := state;]]></ST>
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Execute_State.Cycle">
-      <LineId Id="5" Count="0" />
+      <LineId Id="5" Count="2" />
     </LineIds>
     <LineIds Name="Execute_State.FB_init">
       <LineId Id="7" Count="0" />

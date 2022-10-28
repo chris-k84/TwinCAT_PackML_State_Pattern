@@ -27,7 +27,9 @@ END_VAR
     <Method Name="SetStateComplete" Id="{dd1e03f3-37f8-4e27-a460-2484d595432d}">
       <Declaration><![CDATA[{warning 'add method implementation '}
 METHOD SetStateComplete : BOOL
-]]></Declaration>
+VAR_INPUT
+  newState : I_State;
+END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[]]></ST>
       </Implementation>
