@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="Clearing_State" Id="{c0e240cf-b21a-4849-856e-db4bf862a711}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Clearing_State  IMPLEMENTS ITF_State
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	_state : ITF_PMLBase;
+	_stateMachine : IPmlStateMachine;
+	bDone: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Cycle" Id="{3aaf4e1c-492f-4d94-91e7-90aee0cf7cf0}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Cycle : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bDone THEN
+	_stateMachine.SetStateComplete();
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{d64ba9be-88f5-479b-bc41-6f59705c9952}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+	state : ITF_PMLBase;
+	statemachine : IPmlStateMachine;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_stateMachine := statemachine;
+_state := state;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="Clearing_State">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="Clearing_State.Cycle">
+      <LineId Id="5" Count="1" />
+      <LineId Id="4" Count="0" />
+    </LineIds>
+    <LineIds Name="Clearing_State.FB_init">
+      <LineId Id="7" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

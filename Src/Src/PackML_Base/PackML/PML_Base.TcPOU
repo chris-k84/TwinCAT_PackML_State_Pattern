@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="PML_Base" Id="{d1183f62-92d7-4751-9312-0004156ee9cc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PML_Base IMPLEMENTS ITF_PMLBase
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	stateMachine : PMLStateMachine;
+	iStateMachine : IPmlStateMachine := stateMachine;
+	undefined : Undefined_State(THIS, iStateMachine);
+	aborting : Aborting_State(THIS, iStateMachine);
+	aborted : Aborted_State(THIS, iStateMachine);
+	clearing : Clearing_State(THIS, iStateMachine);
+	stopped : Stopped_State(THIS, iStateMachine);
+	resetting : Resetting_State(THIS, iStateMachine);
+	idle : Idle_State(THIS, iStateMachine);
+	starting : Starting_State(THIS, iStateMachine);
+	execute : Execute_State(THIS, iStateMachine);
+	iState : ITF_State := undefined;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[iState.Cycle();]]></ST>
+    </Implementation>
+    <Method Name="SetStateComplete" Id="{dd1e03f3-37f8-4e27-a460-2484d595432d}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD SetStateComplete : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="PML_Base">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="PML_Base.SetStateComplete">
+      <LineId Id="4" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

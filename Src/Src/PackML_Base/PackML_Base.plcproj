@@ -17,6 +17,57 @@
     <LibraryReferences>{7df1031f-7db9-4416-86fd-afced5f67772}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="PackML\Aborted_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\Aborting_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\Clearing_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\Execute_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\Idle_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\ITF_PMLBase.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\ITF_State.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\MAIN_1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\PackMLStateMachineWrapper\IPmlStateMachine.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\PackMLStateMachineWrapper\PackMLCommand.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\PackMLStateMachineWrapper\PackMLState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\PackMLStateMachineWrapper\PMLStateMachine.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\PML_Base.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\Resetting_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\Starting_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\Stopped_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML\Undefined_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +78,8 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="PackML" />
+    <Folder Include="PackML\PackMLStateMachineWrapper" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
