@@ -22,7 +22,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[iState.Cycle();]]></ST>
+      <ST><![CDATA[iState.Cycle();
+stateMachine();]]></ST>
     </Implementation>
     <Method Name="SetState" Id="{2ca6654e-4c3f-4cc7-b3d6-deb3ce0ce962}">
       <Declaration><![CDATA[METHOD SetState : BOOL
@@ -36,6 +37,7 @@ END_VAR
     </Method>
     <LineIds Name="PML_Base">
       <LineId Id="9" Count="0" />
+      <LineId Id="29" Count="0" />
     </LineIds>
     <LineIds Name="PML_Base.SetState">
       <LineId Id="5" Count="0" />
