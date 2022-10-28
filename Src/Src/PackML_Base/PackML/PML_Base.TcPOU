@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <POU Name="PML_Base" Id="{d1183f62-92d7-4751-9312-0004156ee9cc}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK PML_Base IMPLEMENTS ITF_PMLBase
+    <Declaration><![CDATA[FUNCTION_BLOCK PML_Base
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -24,21 +24,21 @@ END_VAR
     <Implementation>
       <ST><![CDATA[iState.Cycle();]]></ST>
     </Implementation>
-    <Method Name="SetStateComplete" Id="{dd1e03f3-37f8-4e27-a460-2484d595432d}">
-      <Declaration><![CDATA[{warning 'add method implementation '}
-METHOD SetStateComplete : BOOL
+    <Method Name="SetState" Id="{2ca6654e-4c3f-4cc7-b3d6-deb3ce0ce962}">
+      <Declaration><![CDATA[METHOD SetState : BOOL
 VAR_INPUT
-  newState : I_State;
-END_VAR]]></Declaration>
+  newState : ITF_State;
+END_VAR
+]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[THIS^.iState := newState;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="PML_Base">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="PML_Base.SetStateComplete">
-      <LineId Id="4" Count="0" />
+    <LineIds Name="PML_Base.SetState">
+      <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -32,13 +32,7 @@
     <Compile Include="PackML\Idle_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\ITF_PMLBase.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PackML\ITF_State.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML\MAIN_1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PackML\PackMLStateMachineWrapper\IPmlStateMachine.TcIO">
@@ -96,6 +90,15 @@
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_PackML_V2">
+      <DefaultResolution>Tc3_PackML_V2, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_PackML_V2</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PackML_Base.tmc">
+      <SubType>Content</SubType>
+    </None>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

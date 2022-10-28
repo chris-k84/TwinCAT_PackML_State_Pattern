@@ -7,7 +7,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	_state : ITF_PMLBase;
+	pPML_Base : POINTER TO PML_Base;
 	_stateMachine : IPmlStateMachine;
 	bDone: BOOL;
 END_VAR
@@ -22,6 +22,7 @@ METHOD Cycle : BOOL
       <Implementation>
         <ST><![CDATA[IF bDone THEN
 	_stateMachine.SetStateComplete();
+	pPML_Base^.SetState(pPML_Base^.stopped);
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -30,24 +31,24 @@ END_IF]]></ST>
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
-	state : ITF_PMLBase;
+	pPML_Base : POINTER TO PML_Base;
 	statemachine : IPmlStateMachine;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[_stateMachine := statemachine;
-_state := state;]]></ST>
+THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="Clearing_State">
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Clearing_State.Cycle">
-      <LineId Id="5" Count="1" />
+      <LineId Id="5" Count="2" />
       <LineId Id="4" Count="0" />
     </LineIds>
     <LineIds Name="Clearing_State.FB_init">
-      <LineId Id="7" Count="0" />
+      <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>
   </POU>
