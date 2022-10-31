@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="Resetting_State_Sample" Id="{a55d4d71-4945-4a20-a665-8ca399172363}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Resetting_State_Sample  IMPLEMENTS ITF_State
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	pPML_Base : POINTER TO PML_Base;
+	_stateMachine : IPmlStateMachine;
+	bResetComplete : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Cycle" Id="{882ac881-ce51-4945-bc3b-0233053efdf6}">
+      <Declaration><![CDATA[METHOD Cycle : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bResetComplete THEN
+	_stateMachine.SetStateComplete();
+	pPML_Base^.SetState(pPML_Base^.idle);
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{b4c451d4-f077-4abd-bb7b-0ca54e25926c}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+	pPML_Base : POINTER TO PML_Base;
+	statemachine : IPmlStateMachine;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_stateMachine := statemachine;
+THIS^.pPML_Base := pPML_Base;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="Resetting_State_Sample">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="Resetting_State_Sample.Cycle">
+      <LineId Id="12" Count="1" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="14" Count="0" />
+    </LineIds>
+    <LineIds Name="Resetting_State_Sample.FB_init">
+      <LineId Id="11" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

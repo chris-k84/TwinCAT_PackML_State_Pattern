@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="PML_Sample_Class" Id="{f78eb148-8bab-4ff6-9045-48ab7929f8b7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PML_Sample_Class
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	stateMachine : PMLStateMachine;
+	iStateMachine : IPmlStateMachine := stateMachine;
+	undefined : Undefined_State(THIS, iStateMachine);
+	aborting : Aborting_State(THIS, iStateMachine);
+	aborted : Aborted_State(THIS, iStateMachine);
+	clearing : Clearing_State(THIS, iStateMachine);
+	stopped : Stopped_State(THIS, iStateMachine);
+	resetting : Resetting_State_Sample(THIS, iStateMachine);
+	idle : Idle_State(THIS, iStateMachine);
+	starting : Starting_State_Sample(THIS, iStateMachine);
+	execute : Execute_State_Sample(THIS, iStateMachine);
+	iState : ITF_State := undefined;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[iState.Cycle();
+stateMachine();]]></ST>
+    </Implementation>
+    <Method Name="SetState" Id="{bd6b5862-4402-4e14-90a6-697d178b5813}">
+      <Declaration><![CDATA[METHOD SetState : BOOL
+VAR_INPUT
+  newState : ITF_State;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.iState := newState;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="PML_Sample_Class">
+      <LineId Id="9" Count="0" />
+      <LineId Id="29" Count="0" />
+    </LineIds>
+    <LineIds Name="PML_Sample_Class.SetState">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
