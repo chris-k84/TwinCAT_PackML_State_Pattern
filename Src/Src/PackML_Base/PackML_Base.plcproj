@@ -62,16 +62,16 @@
     <Compile Include="PackML\Undefined_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML_1\Execute_State_Sample.TcPOU">
+    <Compile Include="PackML_Sample\Execute_State_Sample.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML_1\PML_Sample_Class.TcPOU">
+    <Compile Include="PackML_Sample\PML_Sample_Class.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML_1\Resetting_State_Sample.TcPOU">
+    <Compile Include="PackML_Sample\Resetting_State_Sample.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML_1\Starting_State_Sample.TcPOU">
+    <Compile Include="PackML_Sample\Starting_State_Sample.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
@@ -86,7 +86,7 @@
     <Folder Include="GVLs" />
     <Folder Include="PackML" />
     <Folder Include="PackML\PackMLStateMachineWrapper" />
-    <Folder Include="PackML_1" />
+    <Folder Include="PackML_Sample" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
