@@ -9,7 +9,6 @@ END_VAR
 VAR
 	pPML_Base : POINTER TO PML_Base;
 	_stateMachine : IPmlStateMachine;
-	bDone: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -21,10 +20,9 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF bDone THEN
-	_stateMachine.SetStateComplete();
-	pPML_Base^.SetState(pPML_Base^.idle);
-END_IF]]></ST>
+        <ST><![CDATA[_stateMachine.SetStateComplete();
+pPML_Base^.SetState(pPML_Base^.idle);
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="FB_init" Id="{4facd53f-ccf2-4cc0-b231-e70768116a76}">
@@ -45,7 +43,7 @@ THIS^.pPML_Base := pPML_Base;]]></ST>
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Resetting_State.Cycle">
-      <LineId Id="6" Count="2" />
+      <LineId Id="7" Count="1" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="Resetting_State.FB_init">

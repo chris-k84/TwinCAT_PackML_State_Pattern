@@ -9,21 +9,18 @@ END_VAR
 VAR
 	pPML_Base : POINTER TO PML_Base;
 	_stateMachine : IPmlStateMachine;
-	bDone: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
     <Method Name="Cycle" Id="{ef9f4632-e6d8-4187-96e3-a3c4a4d5873f}">
-      <Declaration><![CDATA[{warning 'add method implementation '}
-METHOD Cycle : BOOL
+      <Declaration><![CDATA[METHOD Cycle : BOOL
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF bDone THEN
-	_stateMachine.SetStateComplete();
-	pPML_Base^.SetState(pPML_Base^.aborted);
-END_IF]]></ST>
+        <ST><![CDATA[_stateMachine.SetStateComplete();
+pPML_Base^.SetState(pPML_Base^.aborted);
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="FB_init" Id="{a93f572d-56b6-4db2-858b-602a3a4a7f42}">
@@ -44,7 +41,7 @@ THIS^.pPML_Base := pPML_Base;]]></ST>
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Aborting_State.Cycle">
-      <LineId Id="5" Count="2" />
+      <LineId Id="6" Count="1" />
       <LineId Id="4" Count="0" />
     </LineIds>
     <LineIds Name="Aborting_State.FB_init">
