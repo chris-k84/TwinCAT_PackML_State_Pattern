@@ -8,11 +8,15 @@ VAR_OUTPUT
 END_VAR
 VAR
 END_VAR
-]]></Declaration>
+VAR_IN_OUT
+	ipackml : IPmlStateMachine;
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Aborted" Id="{0b53e203-5e54-4083-a358-85f9fcb0b82d}">
+    <Folder Name="Action_States" Id="{b5e75466-7e20-4308-9a0c-d79f927f78b2}" />
+    <Folder Name="Wait_States" Id="{4ea05185-b1a4-4062-8470-b5d9cd15033c}" />
+    <Method Name="Aborted" Id="{0b53e203-5e54-4083-a358-85f9fcb0b82d}" FolderPath="Wait_States\">
       <Declaration><![CDATA[METHOD PRIVATE Aborted : BOOL
 VAR_INPUT
 END_VAR
@@ -21,25 +25,25 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Aborting" Id="{a238d54d-264d-44d5-8ffa-3c1950f83c82}">
+    <Method Name="Aborting" Id="{a238d54d-264d-44d5-8ffa-3c1950f83c82}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Aborting : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Clearing" Id="{bc0d4280-1f13-44f7-9829-54e43797220d}">
+    <Method Name="Clearing" Id="{bc0d4280-1f13-44f7-9829-54e43797220d}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Clearing : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Completed" Id="{a2cdb556-85a9-4482-9c68-efa360a9f3a8}">
+    <Method Name="Completed" Id="{a2cdb556-85a9-4482-9c68-efa360a9f3a8}" FolderPath="Wait_States\">
       <Declaration><![CDATA[METHOD PRIVATE Completed : BOOL
 VAR_INPUT
 END_VAR
@@ -48,16 +52,16 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Completing" Id="{d000f392-3ce7-4095-9ef8-8fd0d9356f52}">
+    <Method Name="Completing" Id="{d000f392-3ce7-4095-9ef8-8fd0d9356f52}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Completing : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Execute_State" Id="{c7bd509a-3b83-4cba-a198-2c15be7394c6}">
+    <Method Name="Execute_State" Id="{c7bd509a-3b83-4cba-a198-2c15be7394c6}" FolderPath="Wait_States\">
       <Declaration><![CDATA[METHOD PRIVATE Execute_State : BOOL
 VAR_INPUT
 END_VAR
@@ -66,7 +70,7 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Held" Id="{43527c9b-adbe-4a8d-bea9-48bd143c16e1}">
+    <Method Name="Held" Id="{43527c9b-adbe-4a8d-bea9-48bd143c16e1}" FolderPath="Wait_States\">
       <Declaration><![CDATA[METHOD PRIVATE Held : BOOL
 VAR_INPUT
 END_VAR
@@ -75,16 +79,16 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Holding" Id="{51b21d7c-d045-491a-9230-89c46c7877ba}">
+    <Method Name="Holding" Id="{51b21d7c-d045-491a-9230-89c46c7877ba}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Holding : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Idle" Id="{72ae97ce-bb49-416c-a0c3-2a5d5a89b363}">
+    <Method Name="Idle" Id="{72ae97ce-bb49-416c-a0c3-2a5d5a89b363}" FolderPath="Wait_States\">
       <Declaration><![CDATA[METHOD PRIVATE Idle : BOOL
 VAR_INPUT
 END_VAR
@@ -93,25 +97,25 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Resetting" Id="{a2baa753-5fca-484b-ac9d-210e1d858721}">
+    <Method Name="Resetting" Id="{a2baa753-5fca-484b-ac9d-210e1d858721}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Resetting : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Starting" Id="{7130edc4-9bcd-4f22-a7e3-a08ef79934ac}">
+    <Method Name="Starting" Id="{7130edc4-9bcd-4f22-a7e3-a08ef79934ac}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Starting : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Stopped" Id="{9216c521-0aa8-4d36-b21b-e92e18d080de}">
+    <Method Name="Stopped" Id="{9216c521-0aa8-4d36-b21b-e92e18d080de}" FolderPath="Wait_States\">
       <Declaration><![CDATA[METHOD PRIVATE Stopped : BOOL
 VAR_INPUT
 END_VAR
@@ -120,16 +124,16 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Stopping" Id="{d1deb6dc-cf14-43e2-9c49-5843d0609c07}">
+    <Method Name="Stopping" Id="{d1deb6dc-cf14-43e2-9c49-5843d0609c07}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Stopping : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Suspended" Id="{3a3bac37-3c3e-4d16-8e35-91a2f397e3f4}">
+    <Method Name="Suspended" Id="{3a3bac37-3c3e-4d16-8e35-91a2f397e3f4}" FolderPath="Wait_States\">
       <Declaration><![CDATA[METHOD PRIVATE Suspended : BOOL
 VAR_INPUT
 END_VAR
@@ -138,31 +142,31 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Suspending" Id="{2c5d472d-4db0-4bfa-8212-c6994a3a3a1e}">
+    <Method Name="Suspending" Id="{2c5d472d-4db0-4bfa-8212-c6994a3a3a1e}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Suspending : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Unholding" Id="{c38e73f1-8378-4b42-b35b-fb73989464ff}">
+    <Method Name="Unholding" Id="{c38e73f1-8378-4b42-b35b-fb73989464ff}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Unholding : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Unsuspending" Id="{d39bdcd4-1b3a-4864-8589-79f8ff046f53}">
+    <Method Name="Unsuspending" Id="{d39bdcd4-1b3a-4864-8589-79f8ff046f53}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Unsuspending : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[ipackml.SetStateComplete();]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="PML_Method_Base">
