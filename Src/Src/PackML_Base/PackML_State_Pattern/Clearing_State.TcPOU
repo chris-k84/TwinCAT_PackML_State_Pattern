@@ -1,36 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Execute_State" Id="{108202e6-c7c9-4974-a5b7-3acd91d8837a}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Execute_State  IMPLEMENTS ITF_State
+  <POU Name="Clearing_State" Id="{c0e240cf-b21a-4849-856e-db4bf862a711}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Clearing_State  IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	pPML_Base : POINTER TO PML_Base;
+	pPML_Base : POINTER TO PML_StatePattern_Base;
 	_stateMachine : IPmlStateMachine;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{b81053a7-c788-40eb-a81c-996fff9d6b18}">
+    <Method Name="Cycle" Id="{3aaf4e1c-492f-4d94-91e7-90aee0cf7cf0}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
-VAR_INPUT
-END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Aborting THEN
-	pPML_Base^.SetState(pPML_Base^.aborting);
-END_IF]]></ST>
+        <ST><![CDATA[_stateMachine.SetStateComplete();
+pPML_Base^.SetState(pPML_Base^.stopped);
+]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{154cef4d-188f-4dcf-a46b-37b6c09094d7}">
+    <Method Name="FB_init" Id="{d64ba9be-88f5-479b-bc41-6f59705c9952}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
-	pPML_Base : POINTER TO PML_Base;
+	pPML_Base : POINTER TO PML_StatePattern_Base;
 	statemachine : IPmlStateMachine;
 END_VAR
 ]]></Declaration>
@@ -39,13 +37,14 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Execute_State">
+    <LineIds Name="Clearing_State">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="Execute_State.Cycle">
-      <LineId Id="5" Count="2" />
+    <LineIds Name="Clearing_State.Cycle">
+      <LineId Id="6" Count="1" />
+      <LineId Id="4" Count="0" />
     </LineIds>
-    <LineIds Name="Execute_State.FB_init">
+    <LineIds Name="Clearing_State.FB_init">
       <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>

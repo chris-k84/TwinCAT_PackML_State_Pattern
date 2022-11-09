@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="PML_Base" Id="{d1183f62-92d7-4751-9312-0004156ee9cc}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK PML_Base
+  <POU Name="PML_StatePattern_Base" Id="{d1183f62-92d7-4751-9312-0004156ee9cc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PML_StatePattern_Base
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -35,11 +35,11 @@ END_VAR
         <ST><![CDATA[THIS^.iState := newState;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="PML_Base">
+    <LineIds Name="PML_StatePattern_Base">
       <LineId Id="9" Count="0" />
       <LineId Id="29" Count="0" />
     </LineIds>
-    <LineIds Name="PML_Base.SetState">
+    <LineIds Name="PML_StatePattern_Base.SetState">
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>

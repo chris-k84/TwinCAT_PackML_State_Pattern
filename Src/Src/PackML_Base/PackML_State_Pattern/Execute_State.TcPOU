@@ -1,34 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Aborting_State" Id="{efef8688-79a1-4985-bd2c-9f23761f91b9}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Aborting_State  IMPLEMENTS ITF_State
+  <POU Name="Execute_State" Id="{108202e6-c7c9-4974-a5b7-3acd91d8837a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Execute_State  IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	pPML_Base : POINTER TO PML_Base;
+	pPML_Base : POINTER TO PML_StatePattern_Base;
 	_stateMachine : IPmlStateMachine;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{ef9f4632-e6d8-4187-96e3-a3c4a4d5873f}">
+    <Method Name="Cycle" Id="{b81053a7-c788-40eb-a81c-996fff9d6b18}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
+VAR_INPUT
+END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[_stateMachine.SetStateComplete();
-pPML_Base^.SetState(pPML_Base^.aborted);
-]]></ST>
+        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Aborting THEN
+	pPML_Base^.SetState(pPML_Base^.aborting);
+END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{a93f572d-56b6-4db2-858b-602a3a4a7f42}">
+    <Method Name="FB_init" Id="{154cef4d-188f-4dcf-a46b-37b6c09094d7}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
-	pPML_Base : POINTER TO PML_Base;
+	pPML_Base : POINTER TO PML_StatePattern_Base;
 	statemachine : IPmlStateMachine;
 END_VAR
 ]]></Declaration>
@@ -37,14 +39,13 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Aborting_State">
+    <LineIds Name="Execute_State">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="Aborting_State.Cycle">
-      <LineId Id="6" Count="1" />
-      <LineId Id="4" Count="0" />
+    <LineIds Name="Execute_State.Cycle">
+      <LineId Id="5" Count="2" />
     </LineIds>
-    <LineIds Name="Aborting_State.FB_init">
+    <LineIds Name="Execute_State.FB_init">
       <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>

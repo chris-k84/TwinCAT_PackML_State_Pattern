@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Stopped_State" Id="{07f75b01-2ab4-46f8-9e04-8a2d11283c1e}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Stopped_State  IMPLEMENTS ITF_State
+  <POU Name="Undefined_State" Id="{c5bff6b1-4064-4b65-bcf0-b9e64e1cfe6a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Undefined_State IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	pPML_Base : POINTER TO PML_Base;
+	pPML_Base : POINTER TO PML_StatePattern_Base;
 	_stateMachine : IPmlStateMachine;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{089743e0-2e35-4480-914e-6129f9c4ab64}">
+    <Method Name="Cycle" Id="{aa642894-c26f-4e32-a785-c0387e3cb65b}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Resetting THEN 
-	pPML_Base^.SetState(pPML_Base^.resetting);
+        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Aborting THEN
+	pPML_Base^.SetState(pPML_Base^.aborting);
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{c4cc0871-9569-4d59-b9f4-6bd827de56f5}">
+    <Method Name="FB_init" Id="{eaa13123-eaab-4247-803b-a53ca19725f9}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
-	pPML_Base : POINTER TO PML_Base;
+	pPML_Base : POINTER TO PML_StatePattern_Base;
 	statemachine : IPmlStateMachine;
 END_VAR
 ]]></Declaration>
@@ -39,14 +39,16 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Stopped_State">
-      <LineId Id="9" Count="0" />
+    <LineIds Name="Undefined_State">
+      <LineId Id="12" Count="0" />
     </LineIds>
-    <LineIds Name="Stopped_State.Cycle">
-      <LineId Id="5" Count="2" />
+    <LineIds Name="Undefined_State.Cycle">
+      <LineId Id="5" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="7" Count="0" />
     </LineIds>
-    <LineIds Name="Stopped_State.FB_init">
-      <LineId Id="11" Count="0" />
+    <LineIds Name="Undefined_State.FB_init">
+      <LineId Id="12" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>
   </POU>

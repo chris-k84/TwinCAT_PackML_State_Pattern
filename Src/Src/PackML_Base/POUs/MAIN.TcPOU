@@ -3,7 +3,7 @@
   <POU Name="MAIN" Id="{42a06358-885d-4ebb-8314-bfbbbdbdf83c}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	pmlbase : PML_Base;
+	pmlbase : PML_StatePattern_Base;
 END_VAR
 ]]></Declaration>
     <Implementation>

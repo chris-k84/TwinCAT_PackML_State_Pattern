@@ -17,49 +17,52 @@
     <LibraryReferences>{7df1031f-7db9-4416-86fd-afced5f67772}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="PackML\Aborted_State.TcPOU">
+    <Compile Include="PackMLStateMachineWrapper\IPmlStateMachine.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\Aborting_State.TcPOU">
+    <Compile Include="PackMLStateMachineWrapper\PackMLCommand.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\Clearing_State.TcPOU">
+    <Compile Include="PackMLStateMachineWrapper\PackMLState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\Execute_State.TcPOU">
+    <Compile Include="PackMLStateMachineWrapper\PMLStateMachine.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\Idle_State.TcPOU">
+    <Compile Include="PackML_Method_Pattern\PML_Method_Base.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\ITF_State.TcIO">
+    <Compile Include="PackML_State_Pattern\Aborted_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\PackMLStateMachineWrapper\IPmlStateMachine.TcIO">
+    <Compile Include="PackML_State_Pattern\Aborting_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\PackMLStateMachineWrapper\PackMLCommand.TcDUT">
+    <Compile Include="PackML_State_Pattern\Clearing_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\PackMLStateMachineWrapper\PackMLState.TcDUT">
+    <Compile Include="PackML_State_Pattern\Execute_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\PackMLStateMachineWrapper\PMLStateMachine.TcPOU">
+    <Compile Include="PackML_State_Pattern\Idle_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\PML_Base.TcPOU">
+    <Compile Include="PackML_State_Pattern\ITF_State.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\Resetting_State.TcPOU">
+    <Compile Include="PackML_State_Pattern\PML_StatePattern_Base.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\Starting_State.TcPOU">
+    <Compile Include="PackML_State_Pattern\Resetting_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\Stopped_State.TcPOU">
+    <Compile Include="PackML_State_Pattern\Starting_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackML\Undefined_State.TcPOU">
+    <Compile Include="PackML_State_Pattern\Stopped_State.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PackML_State_Pattern\Undefined_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PackML_Sample\Execute_State_Sample.TcPOU">
@@ -84,8 +87,9 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="PackML" />
-    <Folder Include="PackML\PackMLStateMachineWrapper" />
+    <Folder Include="PackMLStateMachineWrapper" />
+    <Folder Include="PackML_Method_Pattern" />
+    <Folder Include="PackML_State_Pattern" />
     <Folder Include="PackML_Sample" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
