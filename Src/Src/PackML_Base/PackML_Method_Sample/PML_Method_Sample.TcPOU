@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="PML_Method_Sample" Id="{7017d611-2e36-4a7a-a774-9234147f3ede}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PML_Method_Sample EXTENDS PML_Method_Base
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SUPER^();]]></ST>
+    </Implementation>
+    <LineIds Name="PML_Method_Sample">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

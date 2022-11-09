@@ -7,8 +7,6 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-END_VAR
-VAR_IN_OUT
 	ipackml : IPmlStateMachine;
 END_VAR]]></Declaration>
     <Implementation>
@@ -134,6 +132,25 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
+    <Property Name="PackMLStateMachine" Id="{cf5e7a1b-4ee5-46c8-9a79-b6965176ee5b}">
+      <Declaration><![CDATA[PROPERTY PUBLIC PackMLStateMachine : IPmlStateMachine]]></Declaration>
+      <Get Name="Get" Id="{dec79564-8f21-411e-afc4-a59804408c09}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[PackMLStateMachine := ipackml;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{22e113bd-b318-41f5-8eea-5dd3d4547564}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ipackml := PackMLStateMachine;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <Method Name="Resetting" Id="{a2baa753-5fca-484b-ac9d-210e1d858721}" FolderPath="Action_States\">
       <Declaration><![CDATA[METHOD PRIVATE Resetting : BOOL
 VAR_INPUT
@@ -281,6 +298,12 @@ END_VAR
     </LineIds>
     <LineIds Name="PML_Method_Base.Idle">
       <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="PML_Method_Base.PackMLStateMachine.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="PML_Method_Base.PackMLStateMachine.Set">
+      <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="PML_Method_Base.Resetting">
       <LineId Id="5" Count="0" />
