@@ -9,7 +9,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[pmlbase();
+      <ST><![CDATA[
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
