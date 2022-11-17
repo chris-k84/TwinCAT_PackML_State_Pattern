@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PML_Method_Sample" Id="{7017d611-2e36-4a7a-a774-9234147f3ede}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK PML_Method_Sample EXTENDS PML_Method_Base
 VAR_INPUT
@@ -15,7 +15,7 @@ END_VAR
       <ST><![CDATA[SUPER^();]]></ST>
     </Implementation>
     <Method Name="Idle" Id="{b462f406-7670-4d3a-b209-e255407c2bd1}">
-      <Declaration><![CDATA[METHOD PRIVATE Idle : BOOL
+      <Declaration><![CDATA[METHOD PROTECTED Idle : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
@@ -26,7 +26,7 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Stopped" Id="{6f7d0af8-a71f-4c8d-a646-e440dc56bb6b}">
-      <Declaration><![CDATA[METHOD PRIVATE Stopped : BOOL
+      <Declaration><![CDATA[METHOD PROTECTED Stopped : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
