@@ -7,36 +7,22 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	ResetMachine : BOOL;
+	StartMachine : BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[SUPER^();]]></ST>
     </Implementation>
-    <Method Name="Aborted" Id="{580d64fe-2185-4733-85c6-8a6e282a41d0}">
-      <Declaration><![CDATA[METHOD PRIVATE Aborted : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Execute" Id="{8e750e4e-7ddf-4ca0-8a5d-59dbc11bd392}">
-      <Declaration><![CDATA[METHOD PRIVATE Execute : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="Idle" Id="{b462f406-7670-4d3a-b209-e255407c2bd1}">
       <Declaration><![CDATA[METHOD PRIVATE Idle : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[IF StartMachine THEN
+	ipackml.PMLCommand(Command := E_PMLCommand.ePMLCommand_Start);
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Stopped" Id="{6f7d0af8-a71f-4c8d-a646-e440dc56bb6b}">
@@ -45,23 +31,21 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[IF ResetMachine THEN
+	ipackml.PMLCommand(Command := E_PMLCommand.ePMLCommand_Reset);
+END_IF]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="PML_Method_Sample">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="PML_Method_Sample.Aborted">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="PML_Method_Sample.Execute">
-      <LineId Id="5" Count="0" />
-    </LineIds>
     <LineIds Name="PML_Method_Sample.Idle">
       <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="1" />
     </LineIds>
     <LineIds Name="PML_Method_Sample.Stopped">
       <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>
