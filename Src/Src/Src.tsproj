@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{73CD6244-D8F7-404A-B099-F5E9154FD059}" Name="PackML_Base" PrjFilePath="PackML_Base\PackML_Base.plcproj" TmcFilePath="PackML_Base\PackML_Base.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PackML_Base\PackML_Base.tmc" TmcHash="{1776DC79-9D79-36A0-A144-AC5853019031}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PackML_Base\PackML_Base.tmc" TmcHash="{E2FB89E2-D8F4-87E3-A1EF-8270E5F02180}">
 					<Name>PackML_Base Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

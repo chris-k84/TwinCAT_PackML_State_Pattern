@@ -18,6 +18,7 @@ END_VAR
     <Method Name="PmlModeCommand" Id="{e47f0040-a872-4910-963e-7f43c8de5a43}">
       <Declaration><![CDATA[METHOD PmlModeCommand : BOOL
 VAR_INPUT
+	Mode : E_PMLProtectedUnitMode;
 END_VAR
 ]]></Declaration>
     </Method>
