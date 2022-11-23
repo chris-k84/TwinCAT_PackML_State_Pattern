@@ -21,7 +21,7 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF StartMachine THEN
-	ipackml.PMLCommand(Command := E_PMLCommand.ePMLCommand_Start);
+	ipackml.PmlStateCommand(Command := E_PMLCommand.ePMLCommand_Start);
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -32,7 +32,7 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF ResetMachine THEN
-	ipackml.PMLCommand(Command := E_PMLCommand.ePMLCommand_Reset);
+	ipackml.PmlStateCommand(Command := E_PMLCommand.ePMLCommand_Reset);
 END_IF]]></ST>
       </Implementation>
     </Method>

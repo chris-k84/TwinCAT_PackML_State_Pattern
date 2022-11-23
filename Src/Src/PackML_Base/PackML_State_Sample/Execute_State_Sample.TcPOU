@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="Execute_State_Sample" Id="{a87d20ee-0a99-4a25-9138-39db5a008f03}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Execute_State_Sample  IMPLEMENTS ITF_State
 VAR_INPUT
@@ -23,7 +23,7 @@ END_VAR
       <Implementation>
         <ST><![CDATA[IF bShutdown THEN
 	pPML_Base^.SetState(pPML_Base^.aborting);
-	_stateMachine.PMLCommand(Command := E_PMLCommand.ePMLCommand_Abort);
+	_stateMachine.PmlStateCommand(Command := E_PMLCommand.ePMLCommand_Abort);
 END_IF]]></ST>
       </Implementation>
     </Method>
