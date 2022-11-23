@@ -20,12 +20,6 @@
     <Compile Include="PackMLStateMachineWrapper\IPmlStateMachine.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PackMLStateMachineWrapper\PackMLCommand.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackMLStateMachineWrapper\PackMLState.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PackMLStateMachineWrapper\PMLStateMachine.TcPOU">
       <SubType>Code</SubType>
     </Compile>
