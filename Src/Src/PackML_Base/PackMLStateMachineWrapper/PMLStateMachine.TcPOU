@@ -9,7 +9,6 @@ END_VAR
 VAR
 	_pmlStateMachine : Tc3_PackML_V2.PML_StateMachine;
 	_pmlModeMachine : Tc3_PackML_V2.PML_UnitModeManager;
-	_Mode : E_PMLProtectedUnitMode := E_PMLProtectedUnitMode.ePMLProtUnitMode_Production;
 END_VAR
 ]]></Declaration>
     <Implementation>
