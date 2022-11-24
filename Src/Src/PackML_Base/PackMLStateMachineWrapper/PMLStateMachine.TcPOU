@@ -10,12 +10,23 @@ VAR
 	_pmlStateMachine : Tc3_PackML_V2.PML_StateMachine;
 	_pmlModeMachine : Tc3_PackML_V2.PML_UnitModeManager;
 	_subUnits : ARRAY[0..9] OF IPmlStateMachine;
+	subUnitArray : ARRAY[0..9] OF ST_PMLSubUnitInfo;
 	_SubUnitReference: ST_PMLSubUnitInfoRef;
 	i: DINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[IF _SubUnitReference.NoOfSubUnits <> 0 THEN
+	FOR i := 0 TO 9 DO
+		IF _subUnits[i] <> 0 THEN
+			subUnitArray[i].eState := _subUnits[i].GetCurrentState();
+			subUnitArray[i].Active := True;
+		END_IF
+	END_FOR
+	_SubUnitReference.pArray := ADR(subUnitArray);
+	_SubUnitReference.ArraySize := SIZEOF(subUnitArray);
+END_IF
+
 _pmlStateMachine(eMode := _pmlModeMachine.eModeStatus, stSubUnitInfoRef := _SubUnitReference);
 _pmlModeMachine(eState := _pmlStateMachine.eState);]]></ST>
     </Implementation>
@@ -63,9 +74,11 @@ VAR_INPUT
 	SubUnit : IPmlStateMachine;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[FOR i := 0 TO UPPER_BOUND(_subUnits,1) DO
+        <ST><![CDATA[FOR i := 0 TO 9 DO
 	IF _subUnits[i] = 0 THEN
 		_subUnits[i] := SubUnit;
+		_SubUnitReference.NoOfSubUnits := i + 1;
+		EXIT;
 	END_IF
 END_FOR]]></ST>
       </Implementation>
@@ -80,7 +93,12 @@ END_VAR
       </Implementation>
     </Method>
     <LineIds Name="PMLStateMachine">
-      <LineId Id="27" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="51" Count="2" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="54" Count="2" />
+      <LineId Id="49" Count="1" />
+      <LineId Id="47" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="21" Count="0" />
     </LineIds>
@@ -99,7 +117,10 @@ END_VAR
     <LineIds Name="PMLStateMachine.RegisterSubUnit">
       <LineId Id="5" Count="0" />
       <LineId Id="7" Count="0" />
-      <LineId Id="9" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="10" Count="0" />
       <LineId Id="8" Count="0" />
     </LineIds>
     <LineIds Name="PMLStateMachine.SetStateComplete">

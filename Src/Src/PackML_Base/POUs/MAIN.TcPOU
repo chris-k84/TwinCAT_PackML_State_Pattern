@@ -4,17 +4,34 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	pmlbase : PML_StatePattern_Base;
-	packmlmachine : PMLStateMachine;
-	pmlmethod : PML_Method_Sample := (PackMLStateMachine := packmlmachine);
+	controlPML : PMLStateMachine;
+	subPML1 : PMLStateMachine;
+	subPML2 : PMLStateMachine;
+	controlpmlmethod : PML_Method_Sample := (PackMLStateMachine := controlPML);
+	subpmlmethod1 : PML_Method_Sample := (PackMLStateMachine := subPML1);
+	subpmlmethod2 : PML_Method_Sample := (PackMLStateMachine := subPML2);
+	binit: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[packmlmachine();
-pmlmethod.Cycle();]]></ST>
+      <ST><![CDATA[IF NOT binit THEN
+	controlPML.RegisterSubUnit(SubUnit := subPML1);
+	controlPML.RegisterSubUnit(SubUnit := subPML2);
+	binit := true;
+END_IF
+controlpmlmethod.Cycle();
+subpmlmethod1.Cycle();
+subpmlmethod2.Cycle();
+controlPML();
+subPML1();
+subPML2();]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="13" Count="0" />
+      <LineId Id="46" Count="1" />
+      <LineId Id="50" Count="1" />
+      <LineId Id="48" Count="0" />
       <LineId Id="20" Count="0" />
+      <LineId Id="31" Count="4" />
     </LineIds>
   </POU>
 </TcPlcObject>
