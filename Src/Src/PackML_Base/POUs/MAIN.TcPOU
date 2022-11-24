@@ -11,6 +11,7 @@ VAR
 	subpmlmethod1 : PML_Method_Sample := (PackMLStateMachine := subPML1);
 	subpmlmethod2 : PML_Method_Sample := (PackMLStateMachine := subPML2);
 	binit: BOOL;
+	xTest: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -24,7 +25,14 @@ subpmlmethod1.Cycle();
 subpmlmethod2.Cycle();
 controlPML();
 subPML1();
-subPML2();]]></ST>
+subPML2();
+
+IF xTest THEN
+	subPML1.PmlModeCommand(Mode := Tc3_PackML_V2.E_PMLProtectedUnitMode.ePMLProtUnitMode_Production);
+	subPML2.PmlModeCommand(Mode := Tc3_PackML_V2.E_PMLProtectedUnitMode.ePMLProtUnitMode_Production);
+	controlPML.PmlModeCommand(Mode := Tc3_PackML_V2.E_PMLProtectedUnitMode.ePMLProtUnitMode_Production);
+	xTest := FALSE;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="46" Count="1" />
@@ -32,6 +40,12 @@ subPML2();]]></ST>
       <LineId Id="48" Count="0" />
       <LineId Id="20" Count="0" />
       <LineId Id="31" Count="4" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="69" Count="1" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="66" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

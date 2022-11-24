@@ -84,9 +84,9 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="PackML_Method_Sample" />
     <Folder Include="PackMLStateMachineWrapper" />
     <Folder Include="PackML_Method_Pattern" />
+    <Folder Include="PackML_Method_Sample" />
     <Folder Include="PackML_State_Pattern" />
     <Folder Include="PackML_State_Sample" />
     <Folder Include="VISUs" />
