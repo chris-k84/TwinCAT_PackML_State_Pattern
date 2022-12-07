@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35">
-	<Project ProjectGUID="{85F68B98-CEFB-4402-8068-6AF54F3E58FE}" TargetNetId="169.254.61.77.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
+	<Project ProjectGUID="{85F68B98-CEFB-4402-8068-6AF54F3E58FE}" TargetNetId="192.168.4.1.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{73CD6244-D8F7-404A-B099-F5E9154FD059}" Name="PackML_Base" PrjFilePath="PackML_Base\PackML_Base.plcproj" TmcFilePath="PackML_Base\PackML_Base.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PackML_Base\PackML_Base.tmc" TmcHash="{C841B935-36FC-944D-5CD2-EDACACC5FD52}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PackML_Base\PackML_Base.tmc" TmcHash="{BFB84A41-2C4E-DF9F-0CD5-21242FF3D6A4}">
 					<Name>PackML_Base Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>
