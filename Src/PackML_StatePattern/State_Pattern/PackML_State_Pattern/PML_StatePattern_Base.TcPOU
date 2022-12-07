@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="PML_StatePattern_Base" Id="{d1183f62-92d7-4751-9312-0004156ee9cc}" SpecialFunc="None">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PML_StatePattern_Base" Id="{ba6afb7a-8005-4e25-84a5-74a3195b2390}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK PML_StatePattern_Base
 VAR_INPUT
 END_VAR
@@ -25,7 +25,7 @@ END_VAR
       <ST><![CDATA[iState.Cycle();
 stateMachine();]]></ST>
     </Implementation>
-    <Method Name="SetState" Id="{2ca6654e-4c3f-4cc7-b3d6-deb3ce0ce962}">
+    <Method Name="SetState" Id="{dfdcdd31-ba2b-4b00-9c72-539badf1770b}">
       <Declaration><![CDATA[METHOD SetState : BOOL
 VAR_INPUT
   newState : ITF_State;

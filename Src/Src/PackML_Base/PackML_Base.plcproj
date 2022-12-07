@@ -17,49 +17,7 @@
     <LibraryReferences>{7df1031f-7db9-4416-86fd-afced5f67772}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="PackMLStateMachineWrapper\IPmlStateMachine.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackMLStateMachineWrapper\PMLStateMachine.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_Method_Pattern\PML_Method_Base.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PackML_Method_Sample\PML_Method_Sample.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Aborted_State.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Aborting_State.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Clearing_State.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Execute_State.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Idle_State.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\ITF_State.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\PML_StatePattern_Base.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Resetting_State.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Starting_State.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Stopped_State.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PackML_State_Pattern\Undefined_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PackML_State_Sample\Execute_State_Sample.TcPOU">
@@ -84,15 +42,20 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="PackMLStateMachineWrapper" />
-    <Folder Include="PackML_Method_Pattern" />
     <Folder Include="PackML_Method_Sample" />
-    <Folder Include="PackML_State_Pattern" />
     <Folder Include="PackML_State_Sample" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
+    <PlaceholderReference Include="PackML State Machine">
+      <DefaultResolution>PackML State Machine, * (ChrisK)</DefaultResolution>
+      <Namespace>BeckhoffUK</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="State Pattern PackML">
+      <DefaultResolution>State Pattern PackML, * (ChrisK)</DefaultResolution>
+      <Namespace>State_Pattern_PackML</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>

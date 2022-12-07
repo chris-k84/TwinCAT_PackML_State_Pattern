@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Clearing_State" Id="{c0e240cf-b21a-4849-856e-db4bf862a711}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Clearing_State  IMPLEMENTS ITF_State
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Aborting_State" Id="{9ad29b47-7330-4ef2-b0c5-59754296754f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Aborting_State  IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -14,16 +14,16 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{3aaf4e1c-492f-4d94-91e7-90aee0cf7cf0}">
+    <Method Name="Cycle" Id="{fec74ea0-3475-4a7b-9c64-7b4a1d2a7e0a}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[_stateMachine.SetStateComplete();
-pPML_Base^.SetState(pPML_Base^.stopped);
+pPML_Base^.SetState(pPML_Base^.aborted);
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{d64ba9be-88f5-479b-bc41-6f59705c9952}">
+    <Method Name="FB_init" Id="{e57274ba-de98-4eeb-b5e8-8765fcac59eb}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -37,14 +37,14 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Clearing_State">
+    <LineIds Name="Aborting_State">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="Clearing_State.Cycle">
+    <LineIds Name="Aborting_State.Cycle">
       <LineId Id="6" Count="1" />
       <LineId Id="4" Count="0" />
     </LineIds>
-    <LineIds Name="Clearing_State.FB_init">
+    <LineIds Name="Aborting_State.FB_init">
       <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Idle_State" Id="{7dd3493a-af27-400c-95e9-54528a424b7f}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Idle_State  IMPLEMENTS ITF_State
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Stopped_State" Id="{15b9a1bb-5100-4a09-ae1d-2bf0aafa1b08}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Stopped_State  IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -14,18 +14,18 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{08cf2592-dd1a-4742-9586-4d17f06723f4}">
+    <Method Name="Cycle" Id="{590f0262-0511-4d09-85c0-6c93bc717edd}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Starting THEN
-	pPML_Base^.SetState(pPML_Base^.starting);
+        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Resetting THEN 
+	pPML_Base^.SetState(pPML_Base^.resetting);
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{02d6e4c9-2d21-4223-b8b8-ec21968f85fd}">
+    <Method Name="FB_init" Id="{0dc6eec1-c866-4a37-a3d3-0060fcbc8589}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -39,14 +39,14 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Idle_State">
+    <LineIds Name="Stopped_State">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="Idle_State.Cycle">
+    <LineIds Name="Stopped_State.Cycle">
       <LineId Id="5" Count="2" />
     </LineIds>
-    <LineIds Name="Idle_State.FB_init">
-      <LineId Id="12" Count="0" />
+    <LineIds Name="Stopped_State.FB_init">
+      <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>
   </POU>

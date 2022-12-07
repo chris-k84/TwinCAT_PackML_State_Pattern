@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Stopped_State" Id="{07f75b01-2ab4-46f8-9e04-8a2d11283c1e}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Stopped_State  IMPLEMENTS ITF_State
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Clearing_State" Id="{1f23ff1c-63dc-4572-a7ac-ed0a233c0084}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Clearing_State  IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -14,18 +14,16 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{089743e0-2e35-4480-914e-6129f9c4ab64}">
+    <Method Name="Cycle" Id="{67af2511-d343-491e-9dbd-7f9fb6470886}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
-VAR_INPUT
-END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Resetting THEN 
-	pPML_Base^.SetState(pPML_Base^.resetting);
-END_IF]]></ST>
+        <ST><![CDATA[_stateMachine.SetStateComplete();
+pPML_Base^.SetState(pPML_Base^.stopped);
+]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{c4cc0871-9569-4d59-b9f4-6bd827de56f5}">
+    <Method Name="FB_init" Id="{7d0d3ea1-519d-47bd-aebe-ad8c7e3dea47}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -39,13 +37,14 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Stopped_State">
+    <LineIds Name="Clearing_State">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="Stopped_State.Cycle">
-      <LineId Id="5" Count="2" />
+    <LineIds Name="Clearing_State.Cycle">
+      <LineId Id="6" Count="1" />
+      <LineId Id="4" Count="0" />
     </LineIds>
-    <LineIds Name="Stopped_State.FB_init">
+    <LineIds Name="Clearing_State.FB_init">
       <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>

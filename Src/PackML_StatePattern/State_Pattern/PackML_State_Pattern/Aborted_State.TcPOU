@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Execute_State" Id="{108202e6-c7c9-4974-a5b7-3acd91d8837a}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Execute_State  IMPLEMENTS ITF_State
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Aborted_State" Id="{265b751f-4506-4dc5-ab78-9ee267e0b82c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Aborted_State IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -14,18 +14,18 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{b81053a7-c788-40eb-a81c-996fff9d6b18}">
+    <Method Name="Cycle" Id="{3c26da46-729d-4cc4-98be-af66888a650e}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Aborting THEN
-	pPML_Base^.SetState(pPML_Base^.aborting);
+        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Clearing THEN
+	pPML_Base^.SetState(pPML_Base^.clearing);
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{154cef4d-188f-4dcf-a46b-37b6c09094d7}">
+    <Method Name="FB_init" Id="{da46e3ad-aed2-403b-84df-7074277db563}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -39,14 +39,15 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Execute_State">
+    <LineIds Name="Aborted_State">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="Execute_State.Cycle">
-      <LineId Id="5" Count="2" />
+    <LineIds Name="Aborted_State.Cycle">
+      <LineId Id="12" Count="0" />
+      <LineId Id="6" Count="1" />
     </LineIds>
-    <LineIds Name="Execute_State.FB_init">
-      <LineId Id="11" Count="0" />
+    <LineIds Name="Aborted_State.FB_init">
+      <LineId Id="7" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>
   </POU>

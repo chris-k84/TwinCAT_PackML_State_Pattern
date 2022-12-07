@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="PMLStateMachine" Id="{4f8e95fc-32ef-4a74-83fd-0b9512d379fe}" SpecialFunc="None">
+  <POU Name="PMLStateMachine" Id="{3acb0ffb-9e75-4713-9784-09cf44e02b1d}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK PMLStateMachine IMPLEMENTS IPmlStateMachine
 VAR_INPUT
 END_VAR
@@ -32,7 +32,7 @@ _pmlStateMachine(eMode := _pmlModeMachine.eModeStatus, stSubUnitInfoRef := _SubU
 _pmlModeMachine(eState := _pmlStateMachine.eState, bExecute := modeChangeTrigger.Q);
 modeChangeTrigger();]]></ST>
     </Implementation>
-    <Method Name="GetCurrentMode" Id="{7b17abef-31a4-4387-93cc-006ed2905222}">
+    <Method Name="GetCurrentMode" Id="{a543b351-ed82-4c40-8e92-064ccf7f04ae}">
       <Declaration><![CDATA[METHOD PUBLIC GetCurrentMode : E_PmlProtectedUnitMode
 VAR_INPUT
 END_VAR
@@ -41,7 +41,7 @@ END_VAR
         <ST><![CDATA[GetCurrentMode := _pmlModeMachine.eModeStatus;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="GetCurrentState" Id="{8479c0e8-3207-48b3-b8df-7152ee5b03db}">
+    <Method Name="GetCurrentState" Id="{fde5987d-e732-4f9a-a35a-61dbb1d8cf74}">
       <Declaration><![CDATA[METHOD PUBLIC GetCurrentState : E_PMLState
 VAR_INPUT
 END_VAR
@@ -50,7 +50,7 @@ END_VAR
         <ST><![CDATA[GetCurrentState := _pmlStateMachine.eState;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="PmlModeCommand" Id="{dc0b200c-2d34-426a-8bf0-20694991bfff}">
+    <Method Name="PmlModeCommand" Id="{469ac633-6523-4ddf-8fdb-717cd972e2a4}">
       <Declaration><![CDATA[METHOD PUBLIC PmlModeCommand : Bool
 VAR_INPUT
 	Mode : E_PMLProtectedUnitMode;
@@ -61,7 +61,7 @@ END_VAR
 modeChangeTrigger.CLK := true;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="PmlStateCommand" Id="{01ffd23f-e5b1-49e5-90a0-bce9c38c4bb2}">
+    <Method Name="PmlStateCommand" Id="{21267235-cc94-44f6-b36d-074b99cb1582}">
       <Declaration><![CDATA[METHOD PUBLIC PmlStateCommand : BOOL
 VAR_INPUT
 	Command : E_PMLCommand;
@@ -71,7 +71,7 @@ END_VAR
         <ST><![CDATA[_pmlStateMachine.eCommand := Command;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="RegisterSubUnit" Id="{044ff201-9964-43f2-8b8e-3043c26d8dfe}">
+    <Method Name="RegisterSubUnit" Id="{84da2a36-1704-4d61-bb15-d59bd2871aa6}">
       <Declaration><![CDATA[METHOD PUBLIC RegisterSubUnit : IPmlStateMachine
 VAR_INPUT
 	SubUnit : IPmlStateMachine;
@@ -86,7 +86,7 @@ END_VAR]]></Declaration>
 END_FOR]]></ST>
       </Implementation>
     </Method>
-    <Method Name="SetStateComplete" Id="{54ff6d39-a4a9-48c3-861d-183e6664d388}">
+    <Method Name="SetStateComplete" Id="{c21d0ca2-33a0-483f-96fc-a34e86036bc2}">
       <Declaration><![CDATA[METHOD PUBLIC SetStateComplete : BOOL
 VAR_INPUT
 END_VAR

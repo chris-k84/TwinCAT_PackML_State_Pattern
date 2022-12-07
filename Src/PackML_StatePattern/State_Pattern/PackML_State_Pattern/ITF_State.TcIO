@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <Itf Name="ITF_State" Id="{73b3f942-a0c3-4df4-88b6-e9f74409a57e}">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="ITF_State" Id="{0083945d-138d-4ad6-9991-4b6d9f0ab67c}">
     <Declaration><![CDATA[INTERFACE ITF_State
 ]]></Declaration>
-    <Method Name="Cycle" Id="{f1e61e48-796a-45f4-8de0-014ff6e5344c}">
+    <Method Name="Cycle" Id="{88ffa559-518d-46cc-8f55-5c56294c1a45}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
 VAR_INPUT
 END_VAR

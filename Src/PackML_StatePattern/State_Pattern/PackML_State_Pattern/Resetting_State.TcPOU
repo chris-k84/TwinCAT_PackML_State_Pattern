@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Aborting_State" Id="{efef8688-79a1-4985-bd2c-9f23761f91b9}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Aborting_State  IMPLEMENTS ITF_State
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Resetting_State" Id="{04a20e74-9cab-4680-bae9-bdaebe1065f6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Resetting_State  IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -14,16 +14,18 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{ef9f4632-e6d8-4187-96e3-a3c4a4d5873f}">
+    <Method Name="Cycle" Id="{052db35b-c879-47af-ae1f-f617fd56c725}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
+VAR_INPUT
+END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[_stateMachine.SetStateComplete();
-pPML_Base^.SetState(pPML_Base^.aborted);
+pPML_Base^.SetState(pPML_Base^.idle);
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{a93f572d-56b6-4db2-858b-602a3a4a7f42}">
+    <Method Name="FB_init" Id="{5542bb07-3bcc-4a67-9f96-d403aa82b034}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -37,14 +39,14 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Aborting_State">
+    <LineIds Name="Resetting_State">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="Aborting_State.Cycle">
-      <LineId Id="6" Count="1" />
-      <LineId Id="4" Count="0" />
+    <LineIds Name="Resetting_State.Cycle">
+      <LineId Id="7" Count="1" />
+      <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="Aborting_State.FB_init">
+    <LineIds Name="Resetting_State.FB_init">
       <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>

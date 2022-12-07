@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="Resetting_State" Id="{e487e0e3-f47e-443c-893c-c4527c851321}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Resetting_State  IMPLEMENTS ITF_State
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Undefined_State" Id="{33c25d94-4045-4a2a-bf5a-b3f998c3f893}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Undefined_State IMPLEMENTS ITF_State
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -14,18 +14,18 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Cycle" Id="{33253227-e440-4391-8c6c-d0f15e86a992}">
+    <Method Name="Cycle" Id="{a00c5e1b-1c71-4a9c-9d2a-f388815f8da8}">
       <Declaration><![CDATA[METHOD Cycle : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[_stateMachine.SetStateComplete();
-pPML_Base^.SetState(pPML_Base^.idle);
-]]></ST>
+        <ST><![CDATA[IF _stateMachine.GetCurrentState() = E_PMLState.ePMLState_Aborting THEN
+	pPML_Base^.SetState(pPML_Base^.aborting);
+END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{4facd53f-ccf2-4cc0-b231-e70768116a76}">
+    <Method Name="FB_init" Id="{572913d3-d345-4626-9528-2e1ebe661c80}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -39,15 +39,16 @@ END_VAR
 THIS^.pPML_Base := pPML_Base;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="Resetting_State">
-      <LineId Id="9" Count="0" />
+    <LineIds Name="Undefined_State">
+      <LineId Id="12" Count="0" />
     </LineIds>
-    <LineIds Name="Resetting_State.Cycle">
-      <LineId Id="7" Count="1" />
+    <LineIds Name="Undefined_State.Cycle">
       <LineId Id="5" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="7" Count="0" />
     </LineIds>
-    <LineIds Name="Resetting_State.FB_init">
-      <LineId Id="11" Count="0" />
+    <LineIds Name="Undefined_State.FB_init">
+      <LineId Id="12" Count="0" />
       <LineId Id="10" Count="0" />
     </LineIds>
   </POU>
