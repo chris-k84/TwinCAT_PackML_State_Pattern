@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_PMLStateMachine_Tests" Id="{153e17aa-3c02-42b4-9409-4e339c7b2e61}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PMLStateMachine_Tests EXTENDS FB_TestSuite
+VAR
+	PackMLStateMachine : PMLStateMAchine;
+	TestSuiteTimer : TON := (PT := T#1S);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SetInitialModeForStateMachine();
+AbortStateMachineFromUndefined();
+SetStateCompleteTest();
+
+PackMLStateMachine();]]></ST>
+    </Implementation>
+    <Method Name="AbortStateMachineFromUndefined" Id="{be97a7d9-c1e6-47fd-868f-9e0735123da9}">
+      <Declaration><![CDATA[METHOD AbortStateMachineFromUndefined
+VAR
+	currentState : E_PMLState;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF TEST_ORDERED('AbortStateMachineFromUndefined') THEN
+	IF TestSuiteTimer.IN THEN
+		PackMLStateMachine.PmlStateCommand(Command := E_PMLCommand.ePMLCommand_Abort);
+		currentState := PackMLStateMachine.GetCurrentState();
+		
+		IF TestSuiteTimer.Q THEN
+			AssertEquals_UDINT(Expected := E_PMLState.ePMLState_Aborting,
+								Actual := currentState,
+								Message := 'State machine didnt go into aborting');
+			TestSuiteTimer(in := FALSE);
+			TEST_FINISHED();
+		END_IF
+	ELSE
+		currentState := PackMLStateMachine.GetCurrentState();
+		AssertEquals_UDINT(Expected := E_PMLState.ePMLState_Undefined,
+						Actual := currentState,
+						Message := 'State machine not in undefined');
+	END_IF
+	
+	
+	TestSuiteTimer(IN := TRUE);
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ChangeEventSingleTest" Id="{cf4d9d98-aa42-45bc-a34d-bc72cc692920}">
+      <Declaration><![CDATA[METHOD PRIVATE ChangeEventSingleTest
+VAR
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('ChangeEventSingleTest');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Register3SubUnits" Id="{44486354-59f9-4c2f-be74-f3c1103bad46}">
+      <Declaration><![CDATA[METHOD Register3SubUnits
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="RegisterASubUnit" Id="{dafc63f2-f954-4f6a-8a9e-364c3faa900e}">
+      <Declaration><![CDATA[METHOD RegisterASubUnit
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetInitialModeForStateMachine" Id="{6edf451a-0e29-4c4b-abba-a91a12034924}">
+      <Declaration><![CDATA[METHOD SetInitialModeForStateMachine
+VAR
+	currentMode : DINT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF TEST_ORDERED('SetInitialModeForStateMachine') THEN
+	IF TestSuiteTimer.IN THEN
+		PackMLStateMachine.PmlModeCommand(Mode := E_PMLProtectedUnitMode.ePMLProtUnitMode_Production);
+		currentMode := PackMLStateMachine.GetCurrentMode();
+		
+		IF TestSuiteTimer.Q THEN
+			AssertEquals_DINT(Expected := E_PMLProtectedUnitMode.ePMLProtUnitMode_Production,
+								Actual := currentMode,
+								Message := 'State machine mode didnt go into production');
+			TestSuiteTimer(IN := FALSE);			
+			TEST_FINISHED();
+		END_IF
+	ELSE
+		currentMode := PackMLStateMachine.GetCurrentMode();
+		AssertEquals_DINT(Expected := E_PMLProtectedUnitMode.ePMLProtUnitMode_Invalid,
+					Actual := currentMode,
+					Message := 'State machine has a mode');
+	END_IF
+	
+	
+	TestSuiteTimer(IN := TRUE);
+END_IF
+				
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetStateCompleteTest" Id="{7a62278c-da95-418c-a0e1-bdec97969de9}">
+      <Declaration><![CDATA[METHOD SetStateCompleteTest
+VAR
+	currentState : E_PMLState;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF TEST_ORDERED('SetStateCompleteTest') THEN
+	IF TestSuiteTimer.IN THEN
+		PackMLStateMachine.SetStateComplete();
+		currentState := PackMLStateMachine.GetCurrentState();
+		
+		IF TestSuiteTimer.Q THEN
+			AssertEquals_UDINT(Expected := E_PMLState.ePMLState_Aborted,
+								Actual := currentState,
+								Message := 'State machine didnt go into Aborted');
+			TestSuiteTimer(in := FALSE);
+			TEST_FINISHED();
+		END_IF
+	ELSE
+		currentState := PackMLStateMachine.GetCurrentState();
+		AssertEquals_UDINT(Expected := E_PMLState.ePMLState_Aborting,
+						Actual := currentState,
+						Message := 'State machine not in aborting');
+	END_IF
+	
+	
+	TestSuiteTimer(IN := TRUE);
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_PMLStateMachine_Tests">
+      <LineId Id="15" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PMLStateMachine_Tests.AbortStateMachineFromUndefined">
+      <LineId Id="5" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="66" Count="8" />
+      <LineId Id="57" Count="1" />
+      <LineId Id="75" Count="2" />
+      <LineId Id="62" Count="3" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PMLStateMachine_Tests.ChangeEventSingleTest">
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PMLStateMachine_Tests.Register3SubUnits">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PMLStateMachine_Tests.RegisterASubUnit">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PMLStateMachine_Tests.SetInitialModeForStateMachine">
+      <LineId Id="6" Count="1" />
+      <LineId Id="29" Count="8" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="40" Count="2" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="11" Count="2" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PMLStateMachine_Tests.SetStateCompleteTest">
+      <LineId Id="8" Count="20" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
