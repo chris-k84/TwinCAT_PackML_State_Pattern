@@ -11,6 +11,9 @@ END_VAR
       <ST><![CDATA[SetInitialModeForStateMachine();
 AbortStateMachineFromUndefined();
 SetStateCompleteTest();
+Register3SubUnits();
+BlockSubUnitOverRegistration();
+PreventDuplicateSubUnitRegistration();
 
 PackMLStateMachine();]]></ST>
     </Implementation>
@@ -44,6 +47,127 @@ END_VAR
 	TestSuiteTimer(IN := TRUE);
 END_IF
 ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="BlockSubUnitOverRegistration" Id="{e8179913-6f37-4887-8d14-b1f2d582ac94}">
+      <Declaration><![CDATA[METHOD BlockSubUnitOverRegistration
+VAR
+	subUnits : ARRAY[0..10] OF PMLStateMachine;
+	bOK: BOOL;
+	numberOfSubUnits: INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF TEST_ORDERED('Register3SubUnits') THEN
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[0] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 1, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected one event');
+					
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[1] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 2, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected two event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[2] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 3, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected three event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[3] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 4, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected four event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[4] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 5, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected five event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[5] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 6, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected six event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[6] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 7, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected seven event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[7] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 8, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected eight event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[8] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 9, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected nine event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[9] );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 10, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected ten event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[10] );
+AssertFalse(Condition := bOK, Message := 'Subunit added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 10, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected ten event');
+
+TEST_FINISHED();
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="PreventDuplicateSubUnitRegistration" Id="{48775611-ca1a-43da-954d-0dabd7552b92}">
+      <Declaration><![CDATA[METHOD PreventDuplicateSubUnitRegistration
+VAR
+	subUnit1 : PMLStateMachine;
+	bOK : BOOL;
+	numberOfSubUnits : INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF TEST_ORDERED('PreventDuplicateSubUnitRegistration') THEN
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit1 );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 1, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected one event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit1 );
+AssertTrue(Condition := bOK, Message := 'Subunit added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
+AssertEquals_INT(Expected := 1, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected one event');
+					
+TEST_FINISHED();
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Register3SubUnits" Id="{44486354-59f9-4c2f-be74-f3c1103bad46}">
@@ -80,7 +204,7 @@ numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 3, 
 					Actual := numberOfSubUnits, 
 					Message := 'Expected three events');
-
+TEST_FINISHED();
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -153,6 +277,7 @@ END_IF]]></ST>
       <LineId Id="15" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="14" Count="0" />
+      <LineId Id="21" Count="2" />
       <LineId Id="12" Count="0" />
       <LineId Id="11" Count="0" />
     </LineIds>
@@ -166,6 +291,47 @@ END_IF]]></ST>
       <LineId Id="45" Count="0" />
       <LineId Id="42" Count="0" />
       <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PMLStateMachine_Tests.BlockSubUnitOverRegistration">
+      <LineId Id="8" Count="7" />
+      <LineId Id="88" Count="1" />
+      <LineId Id="36" Count="3" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="41" Count="4" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="47" Count="4" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="53" Count="4" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="59" Count="4" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="65" Count="4" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="71" Count="4" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="77" Count="4" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="83" Count="4" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="91" Count="4" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_PMLStateMachine_Tests.PreventDuplicateSubUnitRegistration">
+      <LineId Id="6" Count="15" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_PMLStateMachine_Tests.Register3SubUnits">
       <LineId Id="9" Count="0" />
