@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
   <POU Name="PMLStateMachine" Id="{3acb0ffb-9e75-4713-9784-09cf44e02b1d}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK PMLStateMachine IMPLEMENTS IPmlStateMachine
 VAR_INPUT
@@ -48,6 +48,15 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[GetCurrentState := _pmlStateMachine.eState;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetNumberOfSubUnits" Id="{88b4d87a-c202-4a48-953a-5b41a16e252c}">
+      <Declaration><![CDATA[METHOD GetNumberOfSubUnits : INT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
     <Method Name="PmlModeCommand" Id="{469ac633-6523-4ddf-8fdb-717cd972e2a4}">
@@ -110,6 +119,9 @@ END_VAR
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="PMLStateMachine.GetCurrentState">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="PMLStateMachine.GetNumberOfSubUnits">
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="PMLStateMachine.PmlModeCommand">

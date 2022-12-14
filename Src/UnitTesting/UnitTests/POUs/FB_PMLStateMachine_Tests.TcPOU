@@ -46,33 +46,42 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="ChangeEventSingleTest" Id="{cf4d9d98-aa42-45bc-a34d-bc72cc692920}">
-      <Declaration><![CDATA[METHOD PRIVATE ChangeEventSingleTest
-VAR
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[TEST('ChangeEventSingleTest');
-
-TEST_FINISHED();]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="Register3SubUnits" Id="{44486354-59f9-4c2f-be74-f3c1103bad46}">
       <Declaration><![CDATA[METHOD Register3SubUnits
-VAR_INPUT
+VAR
+	subUnit1 : PMLStateMachine;
+	subUnit2 : PMLStateMachine;
+	subUnit3 : PMLStateMachine;
+	
+	bOK : BOOL;
+	numberOfSubUnits : INT;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="RegisterASubUnit" Id="{dafc63f2-f954-4f6a-8a9e-364c3faa900e}">
-      <Declaration><![CDATA[METHOD RegisterASubUnit
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[IF TEST_ORDERED('Register3SubUnits') THEN
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit1 );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits;
+AssertEquals_INT(Expected := 1, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected one event');
+
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit2 );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits;
+AssertEquals_INT(Expected := 2, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected two events');
+					
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit3 );
+AssertTrue(Condition := bOK, Message := 'Subunit not added');	
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits;
+AssertEquals_INT(Expected := 3, 
+					Actual := numberOfSubUnits, 
+					Message := 'Expected three events');
+
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="SetInitialModeForStateMachine" Id="{6edf451a-0e29-4c4b-abba-a91a12034924}">
@@ -158,15 +167,21 @@ END_IF]]></ST>
       <LineId Id="42" Count="0" />
       <LineId Id="6" Count="0" />
     </LineIds>
-    <LineIds Name="FB_PMLStateMachine_Tests.ChangeEventSingleTest">
-      <LineId Id="5" Count="0" />
-      <LineId Id="7" Count="0" />
-      <LineId Id="6" Count="0" />
-    </LineIds>
     <LineIds Name="FB_PMLStateMachine_Tests.Register3SubUnits">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_PMLStateMachine_Tests.RegisterASubUnit">
+      <LineId Id="9" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="47" Count="1" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="49" Count="4" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="56" Count="4" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="29" Count="0" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_PMLStateMachine_Tests.SetInitialModeForStateMachine">
