@@ -62,21 +62,21 @@ END_VAR
 
 bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit1 );
 AssertTrue(Condition := bOK, Message := 'Subunit not added');	
-numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits;
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 1, 
 					Actual := numberOfSubUnits, 
 					Message := 'Expected one event');
 
 bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit2 );
 AssertTrue(Condition := bOK, Message := 'Subunit not added');	
-numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits;
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 2, 
 					Actual := numberOfSubUnits, 
 					Message := 'Expected two events');
 					
 bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit3 );
 AssertTrue(Condition := bOK, Message := 'Subunit not added');	
-numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits;
+numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 3, 
 					Actual := numberOfSubUnits, 
 					Message := 'Expected three events');

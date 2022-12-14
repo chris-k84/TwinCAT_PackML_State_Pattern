@@ -81,7 +81,7 @@ END_VAR
       </Implementation>
     </Method>
     <Method Name="RegisterSubUnit" Id="{84da2a36-1704-4d61-bb15-d59bd2871aa6}">
-      <Declaration><![CDATA[METHOD PUBLIC RegisterSubUnit : IPmlStateMachine
+      <Declaration><![CDATA[METHOD PUBLIC RegisterSubUnit : BOOL
 VAR_INPUT
 	SubUnit : IPmlStateMachine;
 END_VAR]]></Declaration>
