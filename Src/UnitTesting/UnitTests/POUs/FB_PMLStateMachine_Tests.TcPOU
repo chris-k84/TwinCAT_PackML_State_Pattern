@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_PMLStateMachine_Tests" Id="{153e17aa-3c02-42b4-9409-4e339c7b2e61}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_PMLStateMachine_Tests EXTENDS FB_TestSuite
 VAR
 	PackMLStateMachine : PMLStateMAchine;
+	subUnits : ARRAY[0..10] OF PMLStateMachine;
 	TestSuiteTimer : TON := (PT := T#1S);
 END_VAR
 ]]></Declaration>
@@ -52,13 +53,12 @@ END_IF
     <Method Name="BlockSubUnitOverRegistration" Id="{e8179913-6f37-4887-8d14-b1f2d582ac94}">
       <Declaration><![CDATA[METHOD BlockSubUnitOverRegistration
 VAR
-	subUnits : ARRAY[0..10] OF PMLStateMachine;
 	bOK: BOOL;
 	numberOfSubUnits: INT;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF TEST_ORDERED('Register3SubUnits') THEN
+        <ST><![CDATA[IF TEST_ORDERED('BlockSubUnitOverRegistration') THEN
 
 bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[0] );
 AssertTrue(Condition := bOK, Message := 'Subunit not added');	
@@ -144,7 +144,6 @@ END_IF]]></ST>
     <Method Name="PreventDuplicateSubUnitRegistration" Id="{48775611-ca1a-43da-954d-0dabd7552b92}">
       <Declaration><![CDATA[METHOD PreventDuplicateSubUnitRegistration
 VAR
-	subUnit1 : PMLStateMachine;
 	bOK : BOOL;
 	numberOfSubUnits : INT;
 END_VAR
@@ -152,14 +151,14 @@ END_VAR
       <Implementation>
         <ST><![CDATA[IF TEST_ORDERED('PreventDuplicateSubUnitRegistration') THEN
 
-bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit1 );
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[1] );
 AssertTrue(Condition := bOK, Message := 'Subunit not added');	
 numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 1, 
 					Actual := numberOfSubUnits, 
 					Message := 'Expected one event');
 
-bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit1 );
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[1] );
 AssertTrue(Condition := bOK, Message := 'Subunit added');	
 numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 1, 
@@ -173,10 +172,6 @@ END_IF]]></ST>
     <Method Name="Register3SubUnits" Id="{44486354-59f9-4c2f-be74-f3c1103bad46}">
       <Declaration><![CDATA[METHOD Register3SubUnits
 VAR
-	subUnit1 : PMLStateMachine;
-	subUnit2 : PMLStateMachine;
-	subUnit3 : PMLStateMachine;
-	
 	bOK : BOOL;
 	numberOfSubUnits : INT;
 END_VAR
@@ -184,21 +179,21 @@ END_VAR
       <Implementation>
         <ST><![CDATA[IF TEST_ORDERED('Register3SubUnits') THEN
 
-bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit1 );
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[1] );
 AssertTrue(Condition := bOK, Message := 'Subunit not added');	
 numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 1, 
 					Actual := numberOfSubUnits, 
 					Message := 'Expected one event');
 
-bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit2 );
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[2] );
 AssertTrue(Condition := bOK, Message := 'Subunit not added');	
 numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 2, 
 					Actual := numberOfSubUnits, 
 					Message := 'Expected two events');
 					
-bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnit3 );
+bOK := PackMLStateMachine.RegisterSubUnit(SubUnit := subUnits[3] );
 AssertTrue(Condition := bOK, Message := 'Subunit not added');	
 numberOfSubUnits := PackMLStateMachine.GetNumberOfSubUnits();
 AssertEquals_INT(Expected := 3, 
